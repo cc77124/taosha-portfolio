@@ -6,12 +6,16 @@ declare global {
   }
 }
 
-export function scrollToId(id: string) {
+export function scrollToId(id: string, options?: { center?: boolean }) {
   const el = document.getElementById(id)
   if (!el) return
   if (window.__lenis) {
-    window.__lenis.scrollTo(el, { offset: -64 })
+    let offset = -64
+    if (options?.center) {
+      offset = -Math.max(0, (window.innerHeight - el.offsetHeight) / 2)
+    }
+    window.__lenis.scrollTo(el, { offset })
   } else {
-    el.scrollIntoView({ behavior: 'smooth' })
+    el.scrollIntoView({ behavior: 'smooth', block: options?.center ? 'center' : 'start' })
   }
 }

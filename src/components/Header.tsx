@@ -65,20 +65,20 @@ export default function Header() {
       <div className="site-social">
         <a
           className="social-link"
-          href="#contact"
+          href="#cta"
           onClick={e => {
             e.preventDefault()
-            scrollToId('contact')
+            scrollToId('cta', { center: true })
           }}
         >
           电话 Tel
         </a>
         <a
           className="social-link hide-m"
-          href="#contact"
+          href="#cta"
           onClick={e => {
             e.preventDefault()
-            scrollToId('contact')
+            scrollToId('cta', { center: true })
           }}
         >
           微信 WeChat

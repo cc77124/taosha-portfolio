@@ -46,6 +46,7 @@ export default function CtaBand() {
   return (
     <a
       className="cta-band"
+      id="cta"
       href="mailto:cc826028995@qq.com"
       ref={ref}
       onClick={e => {
