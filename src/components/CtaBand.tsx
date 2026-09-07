@@ -65,9 +65,9 @@ export default function CtaBand() {
 
       <div className="cta-side">
         <p className="cta-contact">
-          Tel 13168851370
+          Tel：13168851370
           <br />
-          WeChat cc826028995
+          WeChat：cc826028995
           <br />
           Guangzhou, China
         </p>
