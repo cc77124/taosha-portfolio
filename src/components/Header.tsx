@@ -3,22 +3,26 @@ import gsap from 'gsap'
 import { EASE, reducedMotion } from '../lib/motion'
 import { scrollToId } from '../lib/scroll'
 
-export default function Header() {
+type Props = {
+  start: boolean
+}
+
+export default function Header({ start }: Props) {
   const ref = useRef<HTMLElement>(null)
 
   useLayoutEffect(() => {
-    if (reducedMotion()) return
+    if (!start || reducedMotion()) return
     const el = ref.current
     if (!el) return
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,
         { y: -22, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, ease: EASE, delay: 1.05 },
+        { y: 0, opacity: 1, duration: 1.2, ease: EASE, delay: 0.55 },
       )
     })
     return () => ctx.revert()
-  }, [])
+  }, [start])
 
   return (
     <header className="site-header" ref={ref}>

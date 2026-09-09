@@ -1,8 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import Loader from './components/Loader'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Work from './components/Work'
@@ -16,6 +17,9 @@ import './lib/motion'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function App() {
+  const [revealed, setRevealed] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.09 })
     window.__lenis = lenis
@@ -36,12 +40,26 @@ export default function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const lenis = window.__lenis
+    if (!lenis) return
+    if (revealed) {
+      lenis.start()
+    } else {
+      window.scrollTo(0, 0)
+      lenis.stop()
+    }
+  }, [revealed])
+
   return (
     <>
+      {!loaded && (
+        <Loader onReveal={() => setRevealed(true)} onDone={() => setLoaded(true)} />
+      )}
       <div className="nav-blur" aria-hidden="true" />
-      <Header />
+      <Header start={revealed} />
       <main>
-        <Hero />
+        <Hero start={revealed} />
         <Work />
         <About />
         <CtaBand />

@@ -101,6 +101,64 @@ section {
   will-change: transform;
 }
 
+/* ---------- Loader 开场遮罩 ---------- */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--peach);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(18px, 3vh, 30px);
+}
+
+.loader-name {
+  display: flex;
+  align-items: center;
+  gap: 0.85em;
+  margin: 0;
+  font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--grey);
+}
+
+.loader-name .mask {
+  padding: 0.24em 0.08em;
+  margin: -0.24em -0.08em;
+}
+
+.loader-sep {
+  font-size: 1.15em;
+  line-height: 1;
+  will-change: transform;
+}
+
+.loader-line {
+  position: relative;
+  width: min(34vw, 300px);
+  height: 2px;
+  background: rgba(150, 144, 140, 0.28);
+  overflow: hidden;
+}
+
+.loader-line-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--grey);
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
 /* ---------- Nav blur strip ---------- */
 
 .nav-blur {

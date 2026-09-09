@@ -2,13 +2,17 @@ import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { EASE, reducedMotion } from '../lib/motion'
 
-export default function Hero() {
+type Props = {
+  start: boolean
+}
+
+export default function Hero({ start }: Props) {
   const rootRef = useRef<HTMLElement>(null)
 
   useLayoutEffect(() => {
-    if (reducedMotion()) return
+    if (!start || reducedMotion()) return
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.25 })
+      const tl = gsap.timeline({ delay: 0.3 })
 
       tl.fromTo(
         '.hero-line',
@@ -29,7 +33,7 @@ export default function Hero() {
         )
     }, rootRef)
     return () => ctx.revert()
-  }, [])
+  }, [start])
 
   return (
     <section className="hero" id="top" ref={rootRef}>
