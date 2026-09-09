@@ -71,33 +71,43 @@ export default function Work() {
 
         tl.fromTo(
           card.querySelector('.project-title .mask-in'),
-          { yPercent: 118, scaleY: 0.6, transformOrigin: '50% 100%' },
-          { yPercent: 0, scaleY: 1, duration: 1.35 },
+          { xPercent: -108 },
+          { xPercent: 0, duration: 1.45 },
         )
           .fromTo(
             card.querySelectorAll('.project-sub, .project-tags'),
-            { y: 26, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.05, stagger: 0.1 },
-            0.2,
+            { x: -36, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.15, stagger: 0.12 },
+            0.28,
           )
           .fromTo(
-            card.querySelector('.col-desc'),
-            { y: 36, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.05 },
-            0.3,
-          )
-          .fromTo(
-            card.querySelector('.col-tools'),
-            { y: 36, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.05 },
+            card.querySelectorAll('.col-desc, .col-tools'),
+            { y: 48, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.2, stagger: 0.14 },
             0.4,
           )
           .fromTo(
-            frames,
-            { clipPath: 'inset(14% 10% 14% 10%)' },
-            { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, stagger: 0.09 },
-            0.45,
+            card.querySelector('.media-grid'),
+            { y: 96 },
+            { y: 0, duration: 1.8 },
+            0.32,
           )
+
+        frames.forEach((frame, i) => {
+          const fromRight = i % 2 === 1
+          const at = 0.42 + i * 0.11
+          tl.fromTo(
+            frame,
+            { clipPath: fromRight ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)' },
+            { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5 },
+            at,
+          ).fromTo(
+            frame.querySelectorAll('img, video'),
+            { xPercent: fromRight ? 14 : -14, scale: 1.08 },
+            { xPercent: 0, scale: 1, duration: 1.5 },
+            at,
+          )
+        })
       })
     }, rootRef)
     return () => ctx.revert()
