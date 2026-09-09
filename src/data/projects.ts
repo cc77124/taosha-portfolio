@@ -30,7 +30,7 @@ const gzjj: Project = {
   year: '2025',
   desc: '负责广州酒家集团利口福全渠道视觉创意工作，涵盖产品包装设计、线上直播间视觉、线下品牌广告物料设计；同时承担趣味创意广告脚本策划，结合 AI 工具完成创意视频创作，实现品牌视觉内容多元化输出。',
   tools: ['Photoshop', 'Illustrator', 'Seedance 2.0', 'ACE Studio'],
-  media: media('gzjj', '01.webp', '02.webp', '03.webp', '04.webp', '05.mp4', '06.webp', '07.webp', '08.mp4'),
+  media: media('gzjj', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.mp4', '07.mp4', '08.webp'),
 }
 
 const gt2: Project = {
@@ -39,8 +39,8 @@ const gt2: Project = {
   title: 'vivo Watch GT2',
   titleEn: 'Amazon & DTC · AI Motion',
   year: '2026',
-  desc: 'vivo Watch GT2 跨境视觉项目，完成境外亚马逊主图、A+ 页面及独立站广告视觉设计，与 AI 视频创作。',
-  tools: ['Photoshop', 'Blender', 'ChatGPT IMG-2', 'Seedance 2.0', 'ACE Studio'],
+  desc: 'vivo Watch GT2 跨境视觉项目，完成境外亚马逊主图 A+ 页面及独立站广告视觉设计，与 AI 视频创作。',
+  tools: ['Photoshop', 'Blender', 'GPT IMG-2', 'Seedance 2.0', 'ACE Studio'],
   media: media('gt2', '01.webp', '02.webp', '03.webp', '04.mp4', '05.webp', '06.webp'),
 }
 
@@ -51,7 +51,7 @@ const v70: Project = {
   titleEn: 'Amazon & DTC · Prime Day Campaign',
   year: '2026',
   desc: 'vivo V70 系列手机跨境电商视觉项目，亚马逊主图、A+、独立站广告创意设计；以及 Prime Day、Summer Deals 等重点大促活动广告设计。',
-  tools: ['Photoshop', 'ChatGPT IMG-2', 'Seedance 2.0', 'ACE Studio'],
+  tools: ['Photoshop', 'GPT IMG-2', 'Seedance 2.0', 'ACE Studio'],
   media: media('v70', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.webp'),
 }
 
@@ -63,12 +63,23 @@ const haluo: Project = {
   year: '2022',
   desc: '嗨啰亲子旅游品牌视觉升级，围绕亲子出行场景重塑品牌识别系统，完成 LOGO 设计、IP 形象打造及线下活动视觉物料设计，强化品牌亲和力、记忆点与活动传播识别度。',
   tools: ['Photoshop', 'Illustrator', 'Blender'],
-  media: media('haluo', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.mp4'),
+  media: media('haluo', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.mp4', '07.webp', '08.webp'),
+}
+
+const mo: Project = {
+  id: 'modelones',
+  index: '05',
+  title: 'MODELONES',
+  titleEn: 'MODELONES · Amazon Visual',
+  year: '2025',
+  desc: '负责美妆品牌 MODELONES 亚马逊渠道主图、A+ 页面的修图与系列延展，针对产品本体、手模照片、胶体质地等素材做质感调校，保障品牌视觉一致性。',
+  tools: ['Photoshop', 'Banana Pro'],
+  media: media('mo', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.webp'),
 }
 
 const tempo11: Project = {
   id: 'tempo-11',
-  index: '05',
+  index: '06',
   title: '得宝 双 11',
   titleEn: 'Tempo · Tmall 11.11 Carnival',
   year: '2024',
@@ -79,7 +90,7 @@ const tempo11: Project = {
 
 const tempo99: Project = {
   id: 'tempo-99',
-  index: '06',
+  index: '07',
   title: '得宝 99 庆典',
   titleEn: 'Tempo · 99 Shopping Festival',
   year: '2024',
@@ -88,9 +99,31 @@ const tempo99: Project = {
   media: media('tempo-99', '01.webp', '02.webp', '03.webp', '04.webp'),
 }
 
+const tempoHua: Project = {
+  id: 'tempo-hua',
+  index: '08',
+  title: '得宝 春游季',
+  titleEn: 'Tempo · Spring Outing Campaign',
+  year: '2025',
+  desc: '得宝天猫淘宝春游专题视觉设计，以樱花香味纸巾为核心产品，构建「出游樱花小镇」创意场景；整合代言人虞书欣，借助 3D 软件与 AI 辅助创作，完成店铺完整页面视觉设计，烘托春日出游氛围，强化产品卖点传递。',
+  tools: ['Photoshop', 'Blender', 'AI Flux'],
+  media: media('tempo-hua', '01.webp', '02.webp', '03.webp', '04.webp'),
+}
+
+const tempoFan: Project = {
+  id: 'tempo-fan',
+  index: '09',
+  title: '得宝 618 预热',
+  titleEn: 'Tempo · 618 Pre-heat',
+  year: '2025',
+  desc: '得宝淘宝 618 预热首页设计，以「解密 618 优惠机密」为主题创意；代言人吴亦凡化身密探角色，完成店铺完整页面创意设计，预热 618 店铺大促氛围。',
+  tools: ['Photoshop', 'Blender', 'AI Flux'],
+  media: media('tempo-fan', '01.webp', '02.webp', '03.webp', '04.webp'),
+}
+
 const tempoVip: Project = {
   id: 'tempo-vip',
-  index: '07',
+  index: '10',
   title: '得宝 会员页',
   titleEn: 'Tempo · Tmall Members Page',
   year: '2023',
@@ -99,31 +132,9 @@ const tempoVip: Project = {
   media: media('tempo-vip', '01.webp', '02.webp', '03.webp', '04.webp'),
 }
 
-const tempoHua: Project = {
-  id: 'tempo-hua',
-  index: '08',
-  title: '得宝 春游季',
-  titleEn: 'Tempo · Spring Outing Campaign',
-  year: '2025',
-  desc: '得宝天猫淘宝春游专题全站视觉设计，以樱花香味纸巾为核心产品，构建「出游樱花小镇」创意场景；整合代言人虞书欣，借助 3D 软件与 AI 辅助创作，完成店铺完整页面视觉设计，烘托春日出游氛围，强化产品卖点传递。',
-  tools: ['Photoshop', 'Blender', 'AI Flux'],
-  media: media('tempo-hua', '01.webp', '02.webp', '03.webp', '04.webp'),
-}
-
-const tempoFan: Project = {
-  id: 'tempo-fan',
-  index: '09',
-  title: '得宝 双 11 预热',
-  titleEn: 'Tempo · 11.11 Pre-heat',
-  year: '2025',
-  desc: '得宝天猫淘宝双 11 预热首页设计，以「解密双 11 优惠机密」为主题创意；代言人化身双 11 密探角色，完成店铺完整页面创意设计，预热双 11 店铺大促氛围。',
-  tools: ['Photoshop', 'Blender', 'AI Flux'],
-  media: media('tempo-fan', '01.webp', '02.webp', '03.webp', '04.webp'),
-}
-
 const sfund: Project = {
   id: 'sfund',
-  index: '10',
+  index: '11',
   title: '广州基金',
   titleEn: 'SFUND · Corporate Annual Book',
   year: '2021',
@@ -134,7 +145,7 @@ const sfund: Project = {
 
 const ddw: Project = {
   id: 'ddw',
-  index: '11',
+  index: '12',
   title: '东莞名家具',
   titleEn: 'DDW · Design Week Catalog',
   year: '2021',
@@ -145,7 +156,7 @@ const ddw: Project = {
 
 const sfc: Project = {
   id: 'sfc',
-  index: '12',
+  index: '13',
   title: '南方财经媒体',
   titleEn: 'SFC · Media Group Book',
   year: '2021',
@@ -156,7 +167,7 @@ const sfc: Project = {
 
 const huaqiao: Project = {
   id: 'huaqiao',
-  index: '13',
+  index: '14',
   title: '华侨外语学校',
   titleEn: 'HQFLS · 65th Anniversary Badge',
   year: '2020',
@@ -170,11 +181,12 @@ const allProjects: Project[] = [
   gt2,
   v70,
   haluo,
+  mo,
   tempo11,
   tempo99,
-  tempoVip,
   tempoHua,
   tempoFan,
+  tempoVip,
   sfund,
   ddw,
   sfc,
