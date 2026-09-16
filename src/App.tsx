@@ -60,7 +60,7 @@ export default function App() {
       <Header start={revealed} />
       <main>
         <Hero start={revealed} />
-        <Work />
+        <Work start={revealed} />
         <About />
         <CtaBand />
         <End />

@@ -21,7 +21,7 @@ const FOLDERS = {
 }
 
 const num = f => {
-  const m = f.match(/(\d+)(?=\.(jpe?g|png|mp4)$)/i)
+  const m = f.match(/(\d+)\s*(?=\.(jpe?g|png|mp4)$)/i)
   return m ? parseInt(m[1]) : 9999
 }
 

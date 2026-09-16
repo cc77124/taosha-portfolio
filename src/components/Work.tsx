@@ -77,7 +77,7 @@ function ProjectCard({
   )
 }
 
-export default function Work() {
+export default function Work({ start }: { start: boolean }) {
   const rootRef = useRef<HTMLElement>(null)
   const [lightbox, setLightbox] = useState<{ id: string; index: number } | null>(null)
 
@@ -94,57 +94,86 @@ export default function Work() {
   useLayoutEffect(() => {
     if (reducedMotion()) return
     const ctx = gsap.context(() => {
+      gsap.set('.project-title .mask-in', { xPercent: -108 })
+      gsap.set('.project-sub, .project-tags', { x: -36, opacity: 0 })
+      gsap.set('.col-desc, .col-tools', { y: 48, opacity: 0 })
+      gsap.set('.media-grid', { y: 96 })
       gsap.utils.toArray<HTMLElement>('.project-card').forEach(card => {
-        const frames = card.querySelectorAll('.media-frame')
-
-        const tl = gsap.timeline({
-          scrollTrigger: { trigger: card, start: 'top 80%', once: true },
-          defaults: { ease: EASE },
-        })
-
-        tl.fromTo(
-          card.querySelector('.project-title .mask-in'),
-          { xPercent: -108 },
-          { xPercent: 0, duration: 1.45 },
-        )
-          .fromTo(
-            card.querySelectorAll('.project-sub, .project-tags'),
-            { x: -36, opacity: 0 },
-            { x: 0, opacity: 1, duration: 1.15, stagger: 0.12 },
-            0.28,
-          )
-          .fromTo(
-            card.querySelectorAll('.col-desc, .col-tools'),
-            { y: 48, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.2, stagger: 0.14 },
-            0.4,
-          )
-          .fromTo(
-            card.querySelector('.media-grid'),
-            { y: 96 },
-            { y: 0, duration: 1.8 },
-            0.32,
-          )
-
-        frames.forEach((frame, i) => {
+        card.querySelectorAll('.media-frame').forEach((frame, i) => {
           const fromRight = i % 2 === 1
-          const at = 0.42 + i * 0.11
-          tl.fromTo(
-            frame,
-            { clipPath: fromRight ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)' },
-            { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5 },
-            at,
-          ).fromTo(
-            frame.querySelectorAll('img, video'),
-            { xPercent: fromRight ? 14 : -14, scale: 1.08 },
-            { xPercent: 0, scale: 1, duration: 1.5 },
-            at,
-          )
+          gsap.set(frame, {
+            clipPath: fromRight ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)',
+          })
+          gsap.set(frame.querySelectorAll('img, video'), {
+            xPercent: fromRight ? 14 : -14,
+            scale: 1.08,
+          })
         })
       })
     }, rootRef)
     return () => ctx.revert()
   }, [])
+
+  useLayoutEffect(() => {
+    if (!start || reducedMotion()) return
+    let ctx: gsap.Context | undefined
+    const dc = gsap.delayedCall(0.6, () => {
+      ctx = gsap.context(() => {
+        gsap.utils.toArray<HTMLElement>('.project-card').forEach(card => {
+          const frames = card.querySelectorAll('.media-frame')
+
+          const tl = gsap.timeline({
+            scrollTrigger: { trigger: card, start: 'top 80%', once: true },
+            defaults: { ease: EASE },
+          })
+
+          tl.fromTo(
+            card.querySelector('.project-title .mask-in'),
+            { xPercent: -108 },
+            { xPercent: 0, duration: 1.45 },
+          )
+            .fromTo(
+              card.querySelectorAll('.project-sub, .project-tags'),
+              { x: -36, opacity: 0 },
+              { x: 0, opacity: 1, duration: 1.15, stagger: 0.12 },
+              0.28,
+            )
+            .fromTo(
+              card.querySelectorAll('.col-desc, .col-tools'),
+              { y: 48, opacity: 0 },
+              { y: 0, opacity: 1, duration: 1.2, stagger: 0.14 },
+              0.4,
+            )
+            .fromTo(
+              card.querySelector('.media-grid'),
+              { y: 96 },
+              { y: 0, duration: 1.8 },
+              0.32,
+            )
+
+          frames.forEach((frame, i) => {
+            const fromRight = i % 2 === 1
+            const at = 0.42 + i * 0.11
+            tl.fromTo(
+              frame,
+              { clipPath: fromRight ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)' },
+              { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5 },
+              at,
+            ).fromTo(
+              frame.querySelectorAll('img, video'),
+              { xPercent: fromRight ? 14 : -14, scale: 1.08 },
+              { xPercent: 0, scale: 1, duration: 1.5 },
+              at,
+            )
+          })
+        })
+      }, rootRef)
+    })
+    return () => {
+      dc.kill()
+      ctx?.revert()
+    }
+  }, [start])
 
   return (
     <section className="work" id="work" ref={rootRef}>
