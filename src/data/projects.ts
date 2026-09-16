@@ -15,12 +15,10 @@ export type Project = {
 }
 
 const media = (slug: string, ...files: string[]): MediaItem[] =>
-  files
-    .map(f => ({
-      type: f.endsWith('.mp4') ? ('video' as const) : ('image' as const),
-      src: `/work/${slug}/${f}`,
-    }))
-    .sort((a, b) => a.src.localeCompare(b.src, undefined, { numeric: true }))
+  files.map(f => ({
+    type: f.endsWith('.mp4') ? ('video' as const) : ('image' as const),
+    src: `/work/${slug}/${f}`,
+  }))
 
 const gzjj: Project = {
   id: 'gzjj',
@@ -63,7 +61,7 @@ const haluo: Project = {
   year: '2022',
   desc: '嗨啰亲子旅游品牌视觉升级，围绕亲子出行场景重塑品牌识别系统，完成 LOGO 设计、IP 形象打造及线下活动视觉物料设计，强化品牌亲和力、记忆点与活动传播识别度。',
   tools: ['Photoshop', 'Illustrator', 'Blender'],
-  media: media('haluo', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.mp4', '07.webp', '08.webp'),
+  media: media('haluo', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '08.webp', '07.webp', '06.mp4'),
 }
 
 const mo: Project = {

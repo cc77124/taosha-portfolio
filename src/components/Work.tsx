@@ -1,11 +1,18 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { EASE, reducedMotion } from '../lib/motion'
 import DotNav from './DotNav'
 import LazyVideo from './LazyVideo'
+import Lightbox from './Lightbox'
 import { projects, type Project } from '../data/projects'
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({
+  project,
+  onZoom,
+}: {
+  project: Project
+  onZoom: (project: Project, mediaIndex: number) => void
+}) {
   return (
     <article className="project-card" id={project.id}>
       <div className="project-info">
@@ -41,15 +48,30 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="media-grid">
-        {project.media.map((item, i) => (
-          <figure className="media-frame" key={item.src}>
-            {item.type === 'video' ? (
+        {project.media.map((item, i) =>
+          item.type === 'video' ? (
+            <figure className="media-frame" key={item.src}>
               <LazyVideo src={item.src} />
-            ) : (
-              <img src={item.src} alt={`${project.title} 作品图 ${i + 1}`} loading="lazy" />
-            )}
-          </figure>
-        ))}
+            </figure>
+          ) : (
+            <figure
+              className="media-frame has-zoom"
+              key={item.src}
+              role="button"
+              tabIndex={0}
+              aria-label={`放大查看 ${project.title} 作品图`}
+              onClick={() => onZoom(project, i)}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  onZoom(project, i)
+                }
+              }}
+            >
+              <img src={item.src} alt={`${project.title} 作品图`} loading="lazy" />
+            </figure>
+          ),
+        )}
       </div>
     </article>
   )
@@ -57,6 +79,17 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function Work() {
   const rootRef = useRef<HTMLElement>(null)
+  const [lightbox, setLightbox] = useState<{ id: string; index: number } | null>(null)
+
+  const handleZoom = (project: Project, mediaIndex: number) => {
+    const imageIndexes = project.media
+      .map((m, i) => (m.type === 'image' ? i : -1))
+      .filter(i => i >= 0)
+    const pos = imageIndexes.indexOf(mediaIndex)
+    setLightbox({ id: project.id, index: pos < 0 ? 0 : pos })
+  }
+
+  const zoomProject = lightbox ? projects.find(p => p.id === lightbox.id) : null
 
   useLayoutEffect(() => {
     if (reducedMotion()) return
@@ -118,8 +151,20 @@ export default function Work() {
       <DotNav />
 
       {projects.map(project => (
-        <ProjectCard key={project.id} project={project} />
+        <ProjectCard key={project.id} project={project} onZoom={handleZoom} />
       ))}
+
+      {zoomProject && (
+        <Lightbox
+          title={zoomProject.title}
+          items={zoomProject.media
+            .filter(m => m.type === 'image')
+            .map(m => ({ src: m.src, alt: `${zoomProject.title} 作品图` }))}
+          index={lightbox!.index}
+          onClose={() => setLightbox(null)}
+          onIndex={i => setLightbox({ id: zoomProject.id, index: i })}
+        />
+      )}
     </section>
   )
 }
