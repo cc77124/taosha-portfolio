@@ -11,6 +11,7 @@ export default function LazyVideo({ src }: { src: string }) {
         const entry = entries[0]
         if (!entry) return
         if (entry.isIntersecting) {
+          if (!el.src) el.src = el.dataset.src || ''
           el.play().catch(() => {})
         } else {
           el.pause()
@@ -22,5 +23,5 @@ export default function LazyVideo({ src }: { src: string }) {
     return () => io.disconnect()
   }, [])
 
-  return <video ref={ref} src={src} muted loop playsInline preload="metadata" />
+  return <video ref={ref} data-src={src} muted loop playsInline preload="metadata" />
 }

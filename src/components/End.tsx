@@ -14,6 +14,7 @@ export default function End() {
         const entry = entries[0]
         if (!entry) return
         if (entry.isIntersecting) {
+          if (!el.src) el.src = el.dataset.src || ''
           el.play().catch(() => {})
         } else {
           el.pause()
@@ -81,7 +82,7 @@ export default function End() {
   return (
     <>
       <section className="end" id="contact" ref={rootRef}>
-        <video ref={videoRef} className="end-video" src="/media/end.mp4" muted loop playsInline preload="metadata" />
+        <video ref={videoRef} className="end-video" data-src="/media/end.mp4" muted loop playsInline preload="metadata" />
         <div className="end-overlay" aria-hidden="true" />
 
         <div className="end-words">
