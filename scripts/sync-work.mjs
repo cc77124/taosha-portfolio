@@ -59,6 +59,8 @@ for (const [folder, slug] of Object.entries(FOLDERS)) {
     } else {
       const out = path.join(outDir, `${nn}.webp`)
       await sharp(src).resize({ width: 1800, withoutEnlargement: true }).webp({ quality: 85 }).toFile(out)
+      await sharp(out).resize({ width: 900, withoutEnlargement: true }).webp({ quality: 85 }).toFile(path.join(outDir, `${nn}-900.webp`))
+      await sharp(out).resize({ width: 1200, withoutEnlargement: true }).webp({ quality: 85 }).toFile(path.join(outDir, `${nn}-1200.webp`))
       manifest[slug].push(`${nn}.webp`)
       console.log(`${slug}: ${f} -> ${nn}.webp (${(fs.statSync(out).size / 1024).toFixed(0)} KB)`)
     }

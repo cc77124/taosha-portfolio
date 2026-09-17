@@ -68,7 +68,7 @@ function ProjectCard({
                 }
               }}
             >
-              <img src={item.src} alt={`${project.title} 作品图`} loading="lazy" />
+              <img src={item.src} srcSet={item.srcset} sizes="(max-width: 767px) 100vw, 50vw" alt={`${project.title} 作品图`} loading="lazy" />
             </figure>
           ),
         )}
@@ -188,7 +188,7 @@ export default function Work({ start }: { start: boolean }) {
           title={zoomProject.title}
           items={zoomProject.media
             .filter(m => m.type === 'image')
-            .map(m => ({ src: m.src, alt: `${zoomProject.title} 作品图` }))}
+            .map(m => ({ src: m.src, srcset: m.srcset, alt: `${zoomProject.title} 作品图` }))}
           index={lightbox!.index}
           onClose={() => setLightbox(null)}
           onIndex={i => setLightbox({ id: zoomProject.id, index: i })}

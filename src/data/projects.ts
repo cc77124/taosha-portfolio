@@ -1,6 +1,7 @@
 export type MediaItem = {
   type: 'image' | 'video'
   src: string
+  srcset?: string
 }
 
 export type Project = {
@@ -15,10 +16,17 @@ export type Project = {
 }
 
 const media = (slug: string, ...files: string[]): MediaItem[] =>
-  files.map(f => ({
-    type: f.endsWith('.mp4') ? ('video' as const) : ('image' as const),
-    src: `/work/${slug}/${f}`,
-  }))
+  files.map(f => {
+    const isVideo = f.endsWith('.mp4')
+    const base = f.replace(/\.webp$/, '')
+    return {
+      type: isVideo ? ('video' as const) : ('image' as const),
+      src: `/work/${slug}/${f}`,
+      srcset: isVideo
+        ? undefined
+        : `/work/${slug}/${base}-900.webp 900w, /work/${slug}/${base}-1200.webp 1200w, /work/${slug}/${f} 1800w`,
+    }
+  })
 
 const gzjj: Project = {
   id: 'gzjj',

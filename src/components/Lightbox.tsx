@@ -4,6 +4,7 @@ import { EASE, reducedMotion } from '../lib/motion'
 
 export type LightboxItem = {
   src: string
+  srcset?: string
   alt: string
 }
 
@@ -116,6 +117,8 @@ export default function Lightbox({ title, items, index, onClose, onIndex }: Prop
           className="lightbox-img"
           ref={imgRef}
           src={item.src}
+          srcSet={item.srcset}
+          sizes="84vw"
           alt={item.alt}
           draggable={false}
         />
