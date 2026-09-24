@@ -49,7 +49,7 @@ export default function About() {
     <section className="about" id="about" ref={rootRef}>
       <div className="about-grid">
         <div className="about-photo-wrap">
-          <img className="about-photo" src="/about/photo.webp" alt="陶沙 Tao Sha 个人照片" />
+          <img className="about-photo" src="/about/photo.webp" alt="陶沙 Tao Sha 个人照片" loading="lazy" decoding="async" />
         </div>
 
         <div className="about-copy">

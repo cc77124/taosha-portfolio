@@ -35,7 +35,7 @@ const gzjj: Project = {
   titleEn: 'Guangzhou Restaurant · Omnichannel Visual',
   year: '2025',
   desc: '负责广州酒家集团利口福全渠道视觉创意工作，涵盖产品包装设计、线上直播间视觉、线下品牌广告物料设计；同时承担趣味创意广告脚本策划，结合 AI 工具完成创意视频创作，实现品牌视觉内容多元化输出。',
-  tools: ['Photoshop', 'Illustrator'],
+  tools: ['Photoshop', 'Illustrator', 'Seedance 2.0'],
   media: media('gzjj', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.mp4', '07.mp4', '08.webp'),
 }
 
@@ -46,7 +46,7 @@ const gt2: Project = {
   titleEn: 'Amazon & DTC · AI Motion',
   year: '2026',
   desc: 'vivo Watch GT2 跨境视觉项目，完成境外亚马逊主图 A+ 页面及独立站广告视觉设计，与 AI 视频创作。',
-  tools: ['Photoshop', 'Blender', 'GPT IMG-2'],
+  tools: ['Photoshop', 'Blender', 'GPT IMG-2', 'Seedance 2.0'],
   media: media('gt2', '01.webp', '02.webp', '03.webp', '04.mp4', '05.webp', '06.webp'),
 }
 
