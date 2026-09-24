@@ -61,9 +61,20 @@ const v70: Project = {
   media: media('v70', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.webp'),
 }
 
+const v3c: Project = {
+  id: 'vivo-3c',
+  index: '04',
+  title: 'vivo 3C',
+  titleEn: 'Amazon & DTC · 3C Accessories',
+  year: '2026',
+  desc: 'vivo 系列手机 3C 配件跨境电商视觉项目，亚马逊主图、A+、独立站广告创意设计。',
+  tools: ['Photoshop', 'GPT IMG-2', 'Banana Pro'],
+  media: media('v3c', '01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.webp'),
+}
+
 const haluo: Project = {
   id: 'haluo',
-  index: '04',
+  index: '05',
   title: '嗨啰亲子',
   titleEn: 'HaLuo Family Travel · Brand & IP',
   year: '2022',
@@ -74,7 +85,7 @@ const haluo: Project = {
 
 const mo: Project = {
   id: 'modelones',
-  index: '05',
+  index: '06',
   title: 'MODELONES',
   titleEn: 'MODELONES · Amazon Visual',
   year: '2025',
@@ -85,7 +96,7 @@ const mo: Project = {
 
 const tempo11: Project = {
   id: 'tempo-11',
-  index: '06',
+  index: '07',
   title: '得宝 双 11',
   titleEn: 'Tempo · Tmall 11.11 Carnival',
   year: '2024',
@@ -96,7 +107,7 @@ const tempo11: Project = {
 
 const tempo99: Project = {
   id: 'tempo-99',
-  index: '07',
+  index: '08',
   title: '得宝 99 庆典',
   titleEn: 'Tempo · 99 Shopping Festival',
   year: '2024',
@@ -107,7 +118,7 @@ const tempo99: Project = {
 
 const tempoHua: Project = {
   id: 'tempo-hua',
-  index: '08',
+  index: '09',
   title: '得宝 春游季',
   titleEn: 'Tempo · Spring Outing Campaign',
   year: '2025',
@@ -118,7 +129,7 @@ const tempoHua: Project = {
 
 const tempoFan: Project = {
   id: 'tempo-fan',
-  index: '09',
+  index: '10',
   title: '得宝 618 预热',
   titleEn: 'Tempo · 618 Pre-heat',
   year: '2025',
@@ -129,7 +140,7 @@ const tempoFan: Project = {
 
 const tempoVip: Project = {
   id: 'tempo-vip',
-  index: '10',
+  index: '11',
   title: '得宝 会员页',
   titleEn: 'Tempo · Tmall Members Page',
   year: '2023',
@@ -140,7 +151,7 @@ const tempoVip: Project = {
 
 const sfund: Project = {
   id: 'sfund',
-  index: '11',
+  index: '12',
   title: '广州基金',
   titleEn: 'SFUND · Corporate Annual Book',
   year: '2021',
@@ -151,7 +162,7 @@ const sfund: Project = {
 
 const ddw: Project = {
   id: 'ddw',
-  index: '12',
+  index: '13',
   title: '东莞名家具',
   titleEn: 'DDW · Design Week Catalog',
   year: '2021',
@@ -162,7 +173,7 @@ const ddw: Project = {
 
 const sfc: Project = {
   id: 'sfc',
-  index: '13',
+  index: '14',
   title: '南方财经媒体',
   titleEn: 'SFC · Media Group Book',
   year: '2021',
@@ -173,7 +184,7 @@ const sfc: Project = {
 
 const huaqiao: Project = {
   id: 'huaqiao',
-  index: '14',
+  index: '15',
   title: '华侨外语学校',
   titleEn: 'HQFLS · 65th Anniversary Badge',
   year: '2020',
@@ -186,6 +197,7 @@ const allProjects: Project[] = [
   gzjj,
   gt2,
   v70,
+  v3c,
   haluo,
   mo,
   tempo11,

@@ -10,6 +10,7 @@ const FOLDERS = {
   '01 GZJJ': 'gzjj',
   '02 VIVO WATCH GT2': 'gt2',
   '03 VIVO V70 Series': 'v70',
+  '17 VIVO 3C': 'v3c',
   '04 HaLuo': 'haluo',
   '05 MO': 'mo',
   '06 Tempo 11': 'tempo-11',
@@ -20,14 +21,21 @@ const FOLDERS = {
   '14 huaqiao': 'huaqiao',
 }
 
+// node scripts/sync-work.mjs [slug] — only sync the matching folder
+const only = process.argv[2]
+
 const num = f => {
   const m = f.match(/(\d+)\s*(?=\.(jpe?g|png|mp4)$)/i)
   return m ? parseInt(m[1]) : 9999
 }
 
-const manifest = {}
+const manifestPath = path.resolve('scripts', 'media-manifest.json')
+const manifest = fs.existsSync(manifestPath)
+  ? JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
+  : {}
 
 for (const [folder, slug] of Object.entries(FOLDERS)) {
+  if (only && slug !== only) continue
   const srcDir = path.join(SRC, folder)
   const outDir = path.join(TARGET, slug)
   fs.rmSync(outDir, { recursive: true, force: true })
@@ -67,5 +75,5 @@ for (const [folder, slug] of Object.entries(FOLDERS)) {
   }
 }
 
-fs.writeFileSync(path.resolve('scripts', 'media-manifest.json'), JSON.stringify(manifest, null, 2))
+fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2))
 console.log('\nDONE. Manifest saved.')
