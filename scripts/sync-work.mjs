@@ -55,7 +55,8 @@ for (const [folder, slug] of Object.entries(FOLDERS)) {
     if (/\.mp4$/i.test(f)) {
       const out = path.join(outDir, `${nn}.mp4`)
       const tmp = path.join(outDir, `${nn}.tmp.mp4`)
-      execFileSync('ffmpeg', ['-y', '-i', src, '-c:v', 'libx264', '-crf', '23', '-preset', 'slow', '-pix_fmt', 'yuv420p', '-an', '-movflags', '+faststart', tmp], { stdio: 'ignore' })
+      // CRF 26 + 1280px 上限：SSIM≈0.98 下约省 30% 体积；haluo 源为 1080p HEVC，需归一到 H.264
+      execFileSync('ffmpeg', ['-y', '-i', src, '-vf', "scale='min(1280,iw)':-2", '-c:v', 'libx264', '-crf', '26', '-preset', 'slow', '-pix_fmt', 'yuv420p', '-an', '-movflags', '+faststart', tmp], { stdio: 'ignore' })
       if (fs.statSync(tmp).size < fs.statSync(src).size * 0.9) {
         fs.renameSync(tmp, out)
       } else {
